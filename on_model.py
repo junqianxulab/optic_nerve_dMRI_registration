@@ -236,9 +236,9 @@ class OpticNerveFit:
         fzx.sort(reverse=True)
 
         tmp_y = dat_cnt[:nx/2,:,:,:].sum(fzx[0]).sum(fzx[1]).sum(fzx[2])
-        ys_r = (tmp_y == np.median(tmp_y[tmp_y>0])).nonzero()[0][[0, -1]]
+        ys_r = (tmp_y >= min(nf-2, np.median(tmp_y[tmp_y>0])-1)).nonzero()[0][[0, -1]]
         tmp_y = dat_cnt[nx/2:,:,:,:].sum(fzx[0]).sum(fzx[1]).sum(fzx[2])
-        ys_l = (tmp_y == np.median(tmp_y[tmp_y>0])).nonzero()[0][[0, -1]]
+        ys_l = (tmp_y >= min(nf-2, np.median(tmp_y[tmp_y>0])-1)).nonzero()[0][[0, -1]]
 
         on_mat_r = np.zeros(( nf, ys_r[1]-ys_r[0]+1, 5+9)) # 5: x, y, z, length, rss, 9: len(popt)
         on_mat_l = np.zeros(( nf, ys_l[1]-ys_l[0]+1, 5+9)) # 5: x, y, z, length, rss, 9: len(popt)
