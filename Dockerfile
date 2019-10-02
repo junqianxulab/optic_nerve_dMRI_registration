@@ -33,9 +33,9 @@ ENV ONPATH=/usr/local/on_reg
 RUN mkdir -p $ONPATH
 WORKDIR $ONPATH
 RUN wget -q http://code.activestate.com/recipes/117228-priority-dictionary/download/1/ -O priodict.py
-RUN git clone https://github.com/junqianxulab/Optic_Nerve_Registration.git && \
-    mv Optic_Nerve_Registration/* ./ && \
-    rm Optic_Nerve_Registration -rf
+RUN git clone https://github.com/junqianxulab/optic_nerve_dMRI_registration.git && \
+    mv optic_nerve_dMRI_registration/* ./ && \
+    rm optic_nerve_dMRI_registration -rf
 RUN chmod ugo+x on_reg.py on_2d.py on_create_center_from_model.py
 
 ENV PATH=$PATH:$ANTSPATH:$ONPATH
