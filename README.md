@@ -2,12 +2,16 @@
 ## Non-linear movement/distortion correction in human optic nerve diffusion imaging.
 
 Dependency:
+#### with docker
+* Docker
 
+#### without deocker
 * Python 2.7
   * numpy
   * scipy
   * nibabel >= 2.0
   * Priority dictionary (priodict.py, http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/117228)
+  * ANTs 2.2.0
 
 ## Usage:
 
@@ -48,4 +52,7 @@ on_create_center_from_model.py \
     -r reference_nifti_(dMRI_filename) \
     model_filename
 ```
+
+## Reference:
+[1] Kim et al, Incorporating non-linear alignment and multi-compartmental modeling for improved human optic nerve diffusion imaging. Neuroimage, 2019, 196:102-113. https://www.ncbi.nlm.nih.gov/pubmed/30930313
 
