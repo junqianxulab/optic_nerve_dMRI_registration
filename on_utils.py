@@ -103,7 +103,9 @@ def copy_dwi_files(filelist, outdir='./', prefix='', middle=''):
 
         #if os.path.isfile(to):
         #    continue
-        shutil.copy(filename, to)        
+        shutil.copy(filename, to)
+
+    return [os.path.basename(tmp) for (_, tmp) in to_copy if '.nii' in tmp]
 
 def create_appa(fn_appa, lst_fn):
     lst_fn_tmp = [ 'tmp_appa_%s' % i for i in range(len(lst_fn)) ]

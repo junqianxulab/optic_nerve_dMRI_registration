@@ -72,6 +72,7 @@ filename_edge = filename_wo_ext(filename) + '_fltered_edge.nii.gz'
 filename_centerline_dilated = filename_wo_ext(filename) + '_on_centerline_dilated.nii.gz'
 filename_model = filename_wo_ext(filename) + '_on_model.nii.gz'
 filename_model_1st_bin = filename_wo_ext(filename) + '_on_model_1st_bin.nii.gz'
+filename_on_object = filename_wo_ext(filename) + '_on_model'
 
 if False:
     if len(sys.argv) > 3:
@@ -123,7 +124,7 @@ on.outlier()
 on.estimate()
 print 'done: estimating outliers'
 
-on.save(os.path.join(working_dir, 'on_model'))
+on.save(os.path.join(working_dir, filename_on_object))
 
 on_dil = on.make_segmentation(gaussian_output=True)
 
@@ -180,7 +181,7 @@ for f in range(1, on.shape[-1]):
 
 # ### Merge registered frames
 
-fn_reg = '%s_reg.nii.gz' % fn_out_base
+fn_reg = '%s_nonlin_reg.nii.gz' % fn_out_base
 fns_frame = ['%s_frame_%03d_xenc.nii.gz' % (fn_out_base, f) for f in range(on.shape[-1])]
 cmd = 'fslmerge -t %s %s' % (fn_reg, ' '.join(fns_frame))
 run_command(cmd, verbose)
@@ -195,4 +196,10 @@ run_command(cmd, verbose)
 run_command('cp %s ./' % fn_model_reg, verbose)
 
 print 'done: registration'
+print ''
+print 'to create optic nerve center estimation, run:'
+print '    on_create_center_from_model.py -r %s %s' % (os.path.basename(fn_reg), os.path.basename(filename_on_object))
+print ''
+print 'Check the result:'
+print '    fslview %s' % fn_reg
 
