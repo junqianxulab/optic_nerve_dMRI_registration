@@ -39,3 +39,9 @@ on_rigid_reg.py ../../dwi_filelist.txt
 fslmerge -t dwi_rigid sub01_dwi_1_PA_rigid.nii.gz sub01_dwi_2_rigid.nii.gz
 ```
 
+8. Merge b-value and b-vector files.
+```
+paste sub01_dwi_1_PA.bval sub01_dwi_2_PA.bval >dwi_rigid.bval
+paste sub01_dwi_1_PA.bvec sub01_dwi_2_PA.bvec >dwi_rigid.bvec
+```
+
