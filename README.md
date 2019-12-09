@@ -19,6 +19,9 @@
 
 ## Usage:
 
+### run Docker image
+* `run_on_reg_docker.sh` will run bash in the `on_reg` container as a current user. It also mount a current directory to `/data` inside the container.
+
 ### [Preparation](data_preparation.md)
 
 ### Registration
