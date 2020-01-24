@@ -50,7 +50,7 @@ RUN apt autoremove --purge
 
 COPY * ./
 
-RUN chmod ugo+x on_reg.py on_2d.py on_create_center_from_model.py on_rigid_reg.py prepare_dwi_files.py extract_b0_dwi_mean.py on_centerline.py
+RUN chmod ugo+x on_reg.py on_2d.py on_create_center_from_model.py on_rigid_reg.py prepare_dwi_files.py extract_b0_dwi_mean.py on_centerline.py on_calculate_movement.py
 
 VOLUME ["/data"]
 WORKDIR /data
