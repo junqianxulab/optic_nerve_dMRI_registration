@@ -75,7 +75,7 @@ if __name__ == '__main__':
     fn_bval, fn_bvec = create_merged(fn_dwi, lst_fn_dwi)
 
     fn_dwi_b0_mask = '%s_b0_mask.nii.gz' % fn_dwi
-    run_command('extract_b0_dwi_mean.py %s.nii.gz %s %s' % (fn_dwi, fn_bval, os.path.basename(fn_dwi)))
+    run_command('extract_b0_dwi_mean.py %s.nii.gz %s %s' % (fn_dwi, fn_bval, fn_dwi))
     fn_dwi_b0 = '%s_b0.nii.gz' % fn_dwi
     create_mask(fn_dwi_b0, fn_dwi_b0_mask, thr=float(args.thr))
 
